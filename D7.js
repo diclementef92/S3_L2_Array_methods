@@ -206,11 +206,23 @@ const movies = [
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
 
+// const oldestFilm = function (films) {
+//   let moviesYears = films.map((film) => Number(film.Year));
+//   return Math.min(...moviesYears);
+// };
 const oldestFilm = function (films) {
-  let moviesYears = films.map((film) => Number(film.Year));
-  return Math.min(...moviesYears);
-};
+  let min = parseInt(films[0].Year);
+  let indexMin = 0;
+  for (let i = 0; i < films.length; i++) {
+    const year = parseInt(films[i].Year);
 
+    if (year < min) {
+      min = year;
+      indexMin = i;
+    }
+  }
+  return films[indexMin];
+};
 console.log("Esercizio 10: oldestFilm", oldestFilm(movies));
 
 /* ESERCIZIO 11
